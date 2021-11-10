@@ -9,13 +9,24 @@ const app = Vue.createApp({
 
   methods: {
 
-    created() {
+    next() {
+
       this.index += 1;
       fetch(this.bindPage(this.index))
         .then(response => response.json())
         .then(data => (this.movies = data.results));
       this.scrollToTop()
     },
+
+    back() {
+      this.index -= 1;
+      fetch(this.bindPage(this.index))
+        .then(response => response.json())
+        .then(data => (this.movies = data.results));
+      this.scrollToTop()
+
+    },
+
 
     bindImage(poster_path) {
       return `https://image.tmdb.org/t/p/original${poster_path}`
@@ -34,16 +45,26 @@ const app = Vue.createApp({
       });
     },
 
-    showDetails(){
-      window.location.href = 'movieDetails.html'
+    showDetails() {
+      window.location.href = "movie.html";
+    }
+
+  },
+
+
+  computed: {
+    full() {
+      return this.index === 500;
+    },
+
+    empty() {
+      return this.index === 1;
     }
   },
+
   mounted() {
-    this.created()
-  }
-
-
-
+    this.next()
+  },
 
 
 })

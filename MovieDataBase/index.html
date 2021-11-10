@@ -7,28 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieDataBase</title>
     <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/fontawesome.css">
 </head>
 
 <body>
     <div id="app">
-
-        <div v-for="movie in movies" @click="showDetails(movie)">
+        <button @click="back" :disabled="empty">Back</button>
+        
+        <button @click="next" :disabled="full">
+            Next
+        </button>
+        <div v-for="movie in movies">
             <h2>{{ movie.title }}</h2>
-            
             <div>
                 <img :src="bindImage(movie.poster_path)" alt="poster" class="image">
+                <review :rate="movie.vote_average"></review>
             </div>
         </div>
 
-        <button @click="created">Next</button>
+        <button @click="back" :disabled="empty">Back</button>
+        
+        <button @click="next" :disabled="full">
+            Next
+        </button>
 
     </div>
 
     <script src="main.js"></script>
-    <script src="./components/movieDetails.js"></script>
-    <script> 
-        const mountedApp = app.mount('#app') 
+    <script src="./components/review.js"></script>
+    <script>
+        const mountedApp = app.mount('#app')
     </script>
 </body>
 
