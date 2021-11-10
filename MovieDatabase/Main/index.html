@@ -11,14 +11,11 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="container">
 
-        <div v-for="movie in movies" @click="showDetails(movie)">
+        <div v-for="movie in movies" @click="showDetails(movie)" >
             <h2>{{ movie.title }}</h2>
-
-            <div>
-                <img :src="bindImage(movie.poster_path)" alt="poster" class="image">
-            </div>
+            <img :src="bindImage(movie.poster_path)" alt="poster" class="image">
         </div>
 
         <button @click="created">Next</button>

@@ -3,7 +3,7 @@ const app = Vue.createApp({
         return {
             movies: [],
             index: 0,
-
+            id: [],
         }
     },
 
@@ -13,7 +13,7 @@ const app = Vue.createApp({
             this.index += 1;
             fetch(this.bindPage(this.index))
                 .then(response => response.json())
-                .then(data => (this.movies = data.results));
+                .then(data => (this.movies = data.results))
             this.scrollToTop()
         },
 
@@ -22,10 +22,9 @@ const app = Vue.createApp({
         },
 
         bindPage(index) {
-            return `https://api.themoviedb.org/3/movie/popular?api_key=822bc57500db955a10820e72e52fd19f&language=it-US&page=${index}`
-
+            return `https://api.themoviedb.org/3/movie/popular?api_key=6f9286d54de4891ea7a5c91779e09786&language=it-US&page=${index}`
         },
-        
+
         scrollToTop() {
             window.scrollTo({
                 top: 0,
@@ -36,6 +35,7 @@ const app = Vue.createApp({
 
         showDetails() {
             window.location.href = 'movieDetails.html'
+            
         }
     },
     mounted() {
