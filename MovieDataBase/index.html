@@ -13,17 +13,20 @@
 <body>
     <div id="app">
 
-        <div v-for="movie in movies">
-            {{ movie.title }}
+        <div v-for="movie in movies" @click="showDetails(movie)">
+            <h2>{{ movie.title }}</h2>
+            
             <div>
                 <img :src="bindImage(movie.poster_path)" alt="poster" class="image">
             </div>
         </div>
 
+        <button @click="created">Next</button>
 
     </div>
 
     <script src="main.js"></script>
+    <script src="./components/movieDetails.js"></script>
     <script> 
         const mountedApp = app.mount('#app') 
     </script>
