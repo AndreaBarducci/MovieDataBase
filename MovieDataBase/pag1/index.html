@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieDataBase</title>
+    <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="../Main/css/style.css">
+    <link rel="stylesheet" href="../Main/css/all.css">
+    <link rel="stylesheet" href="../Main/css/fontawesome.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class=navBar></div>
+        <div class="row">
+            <div v-for="movie in movies">
+
+
+                <div class="column">
+                    <img :src="bindImage(movie.poster_path)" alt="poster" class="image" :href="bindUrl(movie.id)">
+                    <button @click="goToDetail(movie.id)">Details</button>
+                    <review :rate="movie.vote_average"></review>
+                </div>
+
+            </div>
+        </div>
+
+        <button @click="next" :disabled="full" class="loadMore">
+            Load More
+        </button>
+
+    </div>
+
+    <script src="mainP1.js"></script>
+    <script src="../Main/components/review.js"></script>
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
+</body>
+
+</html>
