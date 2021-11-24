@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <p class="text-xl" v-if="object.overview !== ''">
+        <p class="text-xl mx-4" v-if="object.overview !== ''">
           {{ $t("overview") }}{{ object.overview }}
         </p>
         <div class="md:flex flex-wrap align-middle">
