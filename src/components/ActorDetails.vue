@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-400">
+ <div class="bg-gray-400">
     <div class="text-center">
       <h1 class="font-extrabold text-4xl">
         {{ actor.name }}
@@ -16,16 +16,21 @@
           v-else
           src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found.png"
           alt="poster"
+          class="max-w-xs rounded-xl"
         />
       </div>
       <div class="md:flex flex-row m-8">
         <div class="ml-4">
           <div>
-            <p>{{ $t("birthday") }} {{ actor.birthday }}</p>
-            <p v-if="actor.deathday">
-              {{ $t("deathday") }} {{ actor.deathday }}
+            <p v-if="actor.birthday">
+              {{ $t("birthday") }} {{ actor.universalBirthDate(birthday) }}
             </p>
-            <p>{{ $t("placeOfBirth") }} {{ actor.place_of_birth }}</p>
+            <p v-if="actor.deathday">
+              {{ $t("deathday") }} {{ actor.universalDeathDate(deathday) }}
+            </p>
+            <p v-if="actor.place_of_birth">
+              {{ $t("placeOfBirth") }} {{ actor.place_of_birth }}
+            </p>
             <p v-if="actor.biography">
               {{ $t("biography") }} {{ actor.biography }}
             </p>
@@ -36,7 +41,7 @@
     <div>
       <h2 class="font-semibold mx-2">{{ $t("knownFor") }}</h2>
       <div class="flex flex-row overflow-x-auto text-center">
-        <ul v-for="film in films" :key="film.id" class="">
+        <ul v-for="film in films" :key="film.id">
           <router-link
             :to="{
               name: 'about',
@@ -47,17 +52,11 @@
               },
             }"
           >
-            <li class="mx-1 max-h-lg w-64">
+            <li class="mx-1 max-h-md w-48" v-if="film?.poster_path">
               <img
-                v-if="film?.poster_path"
                 :src="film.universalPosterPath()"
                 alt="poster"
                 class="rounded-xl"
-              />
-              <img
-                v-else
-                src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found.png"
-                alt="poster"
               />
               <p class="troncate">{{ film.universalTitle() }}</p>
             </li>

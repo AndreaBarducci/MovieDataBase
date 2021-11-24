@@ -46,6 +46,7 @@
           m-2
           border-2 border-black
           rounded-xl
+          focus:bg-white focus:text-blue-700
         "
       >
         {{ $t("movieButton") }}
@@ -67,6 +68,7 @@
           m-2
           border-2 border-black
           rounded-xl
+          focus:bg-white focus:text-blue-700
         "
       >
         {{ $t("tvButton") }}
@@ -89,6 +91,7 @@
           m-2
           border-2 border-black
           rounded-xl
+          focus:bg-white focus:text-blue-700
         "
       >
         {{ $t("actors") }}
@@ -188,8 +191,9 @@ export default {
         event.preventDefault();
         this.$refs.searchBar.focus();
       }
+
       if (event.key === "Escape") {
-        this.search=""
+        this.search = "";
         this.$refs.searchBar.blur();
         this.emptyResults();
       }
@@ -209,9 +213,13 @@ export default {
   },
 
   watch: {
+    
+
     search: {
       handler() {
-        if (this.search) this.startSearch();
+        if (this.search) {
+          this.startSearch();
+        }
       },
     },
   },

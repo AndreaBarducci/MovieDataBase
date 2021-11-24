@@ -1,0 +1,22 @@
+{
+    "revenue": "دخل: ",
+    "budget": "الدخل: ",
+    "releaseDate": "تاريخ النشر: ",
+    "genres": "الأنواع:",
+    "overview":"قطعة: ",
+    "backToList": "خلف",
+    "movieButton": "فيلم",
+    "tvButton": "مسلسل تلفزيونى",
+    "numberOfSeasons": "مواسم: ",
+    "numberOfEpisodes": "الحلقات: ",
+    "episodeRunTime": "مدة الحلقة: ",
+    "search": "بحث (ctrl+k)",
+    "notAvailable": "غير متوفره",
+    "actors": "ممثلين",
+    "birthday": "تاريخ الولادة: ",
+    "deathday": "تاريخ الوفاة: ",
+    "placeOfBirth": "مكان الولادة: ",
+    "biography": "سيرة شخصية: ",
+    "knownFor": "قام ببطولة: ",
+    "runTime": "مدة:"
+}

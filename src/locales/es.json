@@ -1,0 +1,22 @@
+{
+    "revenue": "Ingreso: ",
+    "budget": "Presupuesto: ",
+    "releaseDate": "Fecha de lanzamiento: ",
+    "genres": "Géneros:",
+    "overview":"Trama: ",
+    "backToList": "Atrás",
+    "movieButton": "Película",
+    "tvButton": "Series de TV",
+    "numberOfSeasons": "Estaciones: ",
+    "numberOfEpisodes": "Episodios: ",
+    "episodeRunTime": "Duración del episodio: ",
+    "search": "Buscar (ctrl+k)",
+    "notAvailable": "Indisponible",
+    "actors": "Actores",
+    "birthday": "Fecha de cumpleaños: ",
+    "deathday": "Fecha de la muerte: ",
+    "placeOfBirth": "Lugar de nacimiento: ",
+    "biography": "Biografía: ",
+    "knownFor": "Protagonizó: ",
+    "runTime": "Duración:"
+}

@@ -1,0 +1,22 @@
+{
+    "revenue": "所得: ",
+    "budget": "バジェット: ",
+    "releaseDate": "発売日: ",
+    "genres": "ジャンル:",
+    "overview":"プロット: ",
+    "backToList": "戻る",
+    "movieButton": "映画",
+    "tvButton": "連続テレビ番組",
+    "numberOfSeasons": "季節: ",
+    "numberOfEpisodes": "エピソード: ",
+    "episodeRunTime": "エピソードの長さ: ",
+    "search": "検索 (ctrl+k)",
+    "notAvailable": "利用できません",
+    "actors": "俳優",
+    "birthday": "生年月日: ",
+    "deathday": "死亡日: ",
+    "placeOfBirth": "出生地: ",
+    "biography": "バイオグラフィー: ",
+    "knownFor": "彼は主演しました: ",
+    "runTime": "間隔:"
+}
