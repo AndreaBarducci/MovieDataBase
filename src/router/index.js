@@ -4,6 +4,7 @@ const routes = [
   {
     path: "/",
     name: "Index",
+  
   },
   {
     path: "/:lang/list/:type",
