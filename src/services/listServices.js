@@ -1,3 +1,4 @@
+import Cast from "../Classes/Cast";
 import Content from "../Classes/Content";
 import Actor from "../Classes/Actor"
 import Film from "../Classes/Film"
@@ -34,6 +35,12 @@ export const listServices = {
   getFilmsById(type,id) {
     return this.baseFetch(`${type}/${id}/combined_credits`)
     .then((x) => x.cast.map((c) => new Film(c,)))
+  
+  },
+
+  getCastById(type,id) {
+    return this.baseFetch(`${type}/${id}/credits`)
+    .then((x) => x.cast.map((c) => new Cast(c,)))
   
   },
 

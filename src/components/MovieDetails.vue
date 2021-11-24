@@ -71,22 +71,40 @@
               class="m-2 max-w-xs mx-auto"
               :key="logo.id"
             >
-              <img
-                v-if="logo.logoPath"
-                :src="logo.bindedImage"
-                alt="company_production"
-                class="max-h-60 mx-auto my-auto"
-              />
-              <img
-                v-else
-                src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found.png"
-                alt="empty"
-              />
               <p class="font-bold">{{ logo.name }}</p>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="flex flex-row overflow-x-auto text-center">
+      <ul v-for="actor in cast" :key="actor.id" class="">
+        <router-link
+          :to="{
+            name: 'about',
+            params: {
+              type: 'person',
+              lang: $route.params.lang,
+              id: actor.id,
+            },
+          }"
+        >
+          <li class="mx-1 max-h-lg w-64">
+            <img
+              v-if="actor?.profile_path"
+              :src="actor.universalPosterPath()"
+              alt="poster"
+              class="rounded-xl"
+            />
+            <img
+              v-else
+              src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found.png"
+              alt="poster"
+            />
+            <p class="troncate">{{ actor.name }} - {{ actor.character }}</p>
+          </li>
+        </router-link>
+      </ul>
     </div>
     <router-link
       :to="{
@@ -117,18 +135,21 @@
 <script>
 import Review from "./Review.vue";
 import Content from "../Classes/Content";
-
+import Cast from "../Classes/Cast";
 import { listServices } from "../services/listServices";
 import { metatagServices } from "../services/metatagServices";
+
 export default {
   components: { Review },
 
   data() {
     return {
+      Cast,
       Content,
       metatagServices,
       listServices,
       object: {},
+      cast: [],
     };
   },
 
@@ -141,6 +162,10 @@ export default {
           this.$route.params.lang
         )
         .then((data) => (this.object = data));
+
+      listServices
+        .getCastById(this.$route.params.type, this.$route.params.id)
+        .then((data) => (this.cast = [...this.cast, ...data]));
     },
   },
 

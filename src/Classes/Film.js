@@ -1,6 +1,5 @@
 import { listServices } from "../services/listServices";
 
-listServices
 
 export default class Film {
   itemsToBind = [
@@ -21,9 +20,6 @@ export default class Film {
         this[item.to] = obj[item.from];
       }
     }
-
-    
-
   }
 
   universalPosterPath() {

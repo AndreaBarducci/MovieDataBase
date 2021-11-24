@@ -11,8 +11,8 @@
           :key="index"
           class="m-4 text-center"
         >
-       <router-link
-         :to="{
+          <router-link
+            :to="{
               name: 'about',
               params: {
                 type: $route.params.type,
@@ -20,27 +20,29 @@
                 lang: $route.params.lang,
               },
             }"
-       > 
-          <div class="bg-gray-50 border-8 border-black rounded-xl md:max-w-xs">
-            <img
-              v-if="actor.profile_path"
-              :src="listServices.bindImage(actor.profile_path)"
-              alt="poster"
-              class="border-b-4 border-black min-w-171"
-              :title="actor.name"
-            />
-            <img
-              v-else
-              src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found.png"
-              alt="poster"
-              class="border-b-4 border-black"
-              :title="actor.name"
-            />
-            <h2 class="h-10 m-2 font-semibold">
-              {{ actor.name }}
-            </h2>
-          </div>
-       </router-link>
+          >
+            <div
+              class="bg-gray-50 border-8 border-black rounded-xl md:max-w-xs"
+            >
+              <img
+                v-if="actor.profile_path"
+                :src="listServices.bindImage(actor.profile_path)"
+                alt="poster"
+                class="border-b-4 border-black min-w-171"
+                :title="actor.name"
+              />
+              <img
+                v-else
+                src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found.png"
+                alt="poster"
+                class="border-b-4 border-black"
+                :title="actor.name"
+              />
+              <h2 class="h-10 m-2 font-semibold">
+                {{ actor.name }}
+              </h2>
+            </div>
+          </router-link>
         </div>
       </div>
     </infinite-scroll>

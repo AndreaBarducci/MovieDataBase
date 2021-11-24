@@ -136,6 +136,7 @@ export default {
 
     $route: {
       handler(newRoute) {
+       
         if (newRoute.name) return;
         this.actor = {};
         this.films = [];
