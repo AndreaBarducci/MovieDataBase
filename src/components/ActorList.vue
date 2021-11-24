@@ -38,7 +38,7 @@
                 class="border-b-4 border-black"
                 :title="actor.name"
               />
-              <h2 class="h-10 m-2 font-semibold">
+              <h2 class="h-auto m-2 font-semibold">
                 {{ actor.name }}
               </h2>
             </div>

@@ -16,8 +16,8 @@ export default class Content {
     "first_air_date",
     "release_date",
     "media_type",
-    "runtime",  
-    
+    "runtime",
+
     {
       from: "poster_path",
       to: "posterPath",

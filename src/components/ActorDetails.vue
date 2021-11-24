@@ -128,7 +128,7 @@ export default {
 
   watch: {
     films: {
-      handler() {
+       handler() {
         this.films = this.films.sort((a, b) => b.popularity - a.popularity);
 
         for (let i = 0; i < this.films.length - 1; i++) {

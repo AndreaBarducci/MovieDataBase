@@ -1,5 +1,5 @@
 import { listServices } from "../services/listServices";
-import { getCurrentLocale } from "../i18n"
+import { getCurrentLocale } from "../i18n";
 
 export default class Actor {
   itemsToBind = [
@@ -25,6 +25,16 @@ export default class Actor {
       }
     }
 
+  }
+
+  universalBirthDate() {
+    const date = this.birthday;
+    return new Intl.DateTimeFormat(getCurrentLocale()).format(new Date(date));
+  }
+
+  universalDeathDate() {
+    const date = this.deathday;
+    return new Intl.DateTimeFormat(getCurrentLocale()).format(new Date(date));
   }
 
   universalPosterPath() {

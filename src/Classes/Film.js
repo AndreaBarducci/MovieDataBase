@@ -1,6 +1,5 @@
 import { listServices } from "../services/listServices";
 
-
 export default class Film {
   itemsToBind = [
     "name",
@@ -9,7 +8,7 @@ export default class Film {
     "character",
     "id",
     "media_type",
-    "popularity"
+    "popularity",
   ];
 
   constructor(obj) {
@@ -29,6 +28,4 @@ export default class Film {
   universalTitle() {
     return this.title || this.name;
   }
-
-
 }

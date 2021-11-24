@@ -90,11 +90,11 @@
                 border-2 border-black
                 rounded-lg
                 bg-white
-                text-center 
+                text-center
               "
             >
               <img v-if="logo.logoPath"
-                class="mx-auto object-contain w-48 h-48 rounded-xl"
+                class="mx-auto object-contain w-48 h-48 rounded-lg"
                 :src="logo.bindedImage"
               />
               <img v-else src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found.png" alt="poster" >
@@ -178,8 +178,6 @@ export default {
   },
 
   methods: {
-
-    
     convert(t) {
       return `${(t / 60) ^ 0}` + "h" + (t % 60) + "m";
     },
