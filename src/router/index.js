@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: "/en/list/movie",
+    path: "/",
     name: "Index",
     redirect: "/en/list/movie"
   
