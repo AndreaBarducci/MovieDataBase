@@ -90,7 +90,7 @@
                 border-2 border-black
                 rounded-lg
                 bg-white
-                text-center
+                text-center 
               "
             >
               <img v-if="logo.logoPath"

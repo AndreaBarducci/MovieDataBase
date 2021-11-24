@@ -23,10 +23,10 @@
         <div class="ml-4">
           <div>
             <p v-if="actor.birthday">
-              {{ $t("birthday") }} {{ actor.universalBirthDate(birthday) }}
+              {{ $t("birthday") }} {{ actor.universalBirthDate(actor.birthday) }}
             </p>
             <p v-if="actor.deathday">
-              {{ $t("deathday") }} {{ actor.universalDeathDate(deathday) }}
+              {{ $t("deathday") }} {{ actor.universalDeathDate(actor.deathday) }}
             </p>
             <p v-if="actor.place_of_birth">
               {{ $t("placeOfBirth") }} {{ actor.place_of_birth }}
@@ -140,7 +140,9 @@ export default {
 
     $route: {
       handler(newRoute) {
-        if (newRoute.name) return;
+        
+        if (!newRoute.params.id) return;
+        
         this.actor = {};
         this.films = [];
         this.details();
