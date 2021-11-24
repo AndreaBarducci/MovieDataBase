@@ -200,7 +200,8 @@ export default {
   watch: {
     $route: {
       handler() {
-        if (!this.$route.params.id) return;
+        
+        if (!this.$route.params.id || this.$route.params.type === 'person') return;
         this.object = {};
         this.details();
       },
