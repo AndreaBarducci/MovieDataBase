@@ -41,14 +41,5 @@ export default class Actor {
     return listServices.bindImage(this.profile_path);
   }
 
-  universalBirthDate() {
-    const date = this.birthday;
-    return new Intl.DateTimeFormat(getCurrentLocale()).format(new Date(date));
-  }
-
-  universalDeathDate() {
-    const date = this.deathday;
-    return new Intl.DateTimeFormat(getCurrentLocale()).format(new Date(date));
-  }
 
 }
