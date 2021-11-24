@@ -4,6 +4,7 @@ const routes = [
   {
     path: "/",
     name: "Index",
+    redirect: "/en/list/movie"
   
   },
   {
