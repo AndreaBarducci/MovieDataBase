@@ -10,6 +10,7 @@
       h-auto
       sticky
       top-0
+      border-b-4 border-black
     "
   >
     <div>
@@ -20,9 +21,9 @@
           font-bold
           text-3xl text-transparent
           bg-clip-text bg-gradient-to-br
-          from-indigo-600
-          via-blue-800
-          to-black
+          from-white
+          via-blue-500
+          to-indigo-600
         "
       >
         MovieDataBaseMDB
@@ -163,7 +164,6 @@ import { listServices } from "../services/listServices";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
 import Content from "../Classes/Content";
 
-
 export default {
   components: { LanguageSwitcher },
   data() {
@@ -198,11 +198,9 @@ export default {
   },
 
   watch: {
-    
     search: {
       handler() {
         if (this.search) this.startSearch();
-        
       },
     },
   },

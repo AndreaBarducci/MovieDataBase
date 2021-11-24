@@ -1,0 +1,23 @@
+{
+    "revenue": "आय: ",
+    "budget": "बजट: ",
+    "releaseDate": "रिलीज़ की तारीख: ",
+    "genres": "शैलियाँ:",
+    "overview": "भूखंड: ",
+    "backToList": "वापस",
+    "movieButton": "चलचित्र",
+    "tvButton": "टीवी सीरीज",
+    "numberOfSeasons": "मौसम के: ",
+    "numberOfEpisodes": "एपिसोड: ",
+    "episodeRunTime": "एपिसोड की लंबाई: ",
+    "search": "खोज (ctrl+k)",
+    "notAvailable": "अनुपलब्ध",
+    "actors": "अभिनेता",
+    "birthday": "जन्म की तारीख: ",
+    "deathday": "मौत की तिथि: ",
+    "placeOfBirth": "जन्म स्थान: ",
+    "biography": "जीवनी: ",
+    "knownFor": "उन्होंने इसमें अभिनय किया: ",
+    "runTime": "अवधि:"
+  
+  }

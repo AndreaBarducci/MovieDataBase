@@ -28,7 +28,7 @@ export default {
   name: "LanguageSwitcher",
   data() {
     return {
-      langs: ["en", "it", "fr"],
+      langs: ["ar", "de", "en", "es", "fr", "hi", "it", "ru", "zh"],
       selectedLang: " ",
     };
   },

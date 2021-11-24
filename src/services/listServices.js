@@ -1,7 +1,7 @@
 import Cast from "../Classes/Cast";
 import Content from "../Classes/Content";
-import Actor from "../Classes/Actor"
-import Film from "../Classes/Film"
+import Actor from "../Classes/Actor";
+import Film from "../Classes/Film";
 import { getCurrentLocale } from "../i18n";
 
 export const listServices = {
@@ -16,15 +16,12 @@ export const listServices = {
    * @returns {Promise<Content>}
    */
   getDetailsById(type, id) {
-    if (type !== "person") return this.baseFetch(`${type}/${id}`).then(
-      (x) => new Content(x, type, "details")
-    );
-
-    else return this.baseFetch(`${type}/${id}`).then(
-      (x) => new Actor(x, type)
-    );
+    if (type !== "person")
+      return this.baseFetch(`${type}/${id}`).then(
+        (x) => new Content(x, type, "details")
+      );
+    else return this.baseFetch(`${type}/${id}`).then((x) => new Actor(x, type));
   },
-
 
   /**
    *
@@ -32,16 +29,16 @@ export const listServices = {
    * @param {*} id
    * @returns {Promise<Film[]>}
    */
-  getFilmsById(type,id) {
-    return this.baseFetch(`${type}/${id}/combined_credits`)
-    .then((x) => x.cast.map((c) => new Film(c,)))
-  
+  getFilmsById(type, id) {
+    return this.baseFetch(`${type}/${id}/combined_credits`).then((x) =>
+      x.cast.map((c) => new Film(c))
+    );
   },
 
-  getCastById(type,id) {
-    return this.baseFetch(`${type}/${id}/credits`)
-    .then((x) => x.cast.map((c) => new Cast(c,)))
-  
+  getCastById(type, id) {
+    return this.baseFetch(`${type}/${id}/credits`).then((x) =>
+      x.cast.map((c) => new Cast(c))
+    );
   },
 
   /**
@@ -55,10 +52,10 @@ export const listServices = {
       return this.baseFetch(`${type}/popular`, {
         page,
       }).then((x) => x.results.map((c) => new Content(c, type, "popular")));
-
-    else return this.baseFetch(`${type}/popular`, {
-      page,
-    }).then((x) => x.results.map((c) => new Actor(c, "person")));
+    else
+      return this.baseFetch(`${type}/popular`, {
+        page,
+      }).then((x) => x.results.map((c) => new Actor(c, "person")));
   },
 
   bindImage(img) {
@@ -78,17 +75,11 @@ export const listServices = {
   },
 
   full(index) {
-    return index === 500
+    return index === 500;
   },
 
   loadMore(index, type, lang) {
-    return this
-      .getPopularByType(
-        type,
-        index,
-        lang
-      )
-
+    return this.getPopularByType(type, index, lang);
   },
 
   search(query) {

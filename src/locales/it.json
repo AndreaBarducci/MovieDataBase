@@ -1,5 +1,4 @@
 {
-    
     "revenue": "Incasso: ",
     "budget": "Budget: ",
     "releaseDate": "Data di rilascio: ",
@@ -18,5 +17,6 @@
     "deathday": "Data di morte: ",
     "placeOfBirth": "Luogo di nascita: ",
     "biography": "Biografia: ",
-    "knownFor": "Ha recitato in: "
+    "knownFor": "Ha recitato in: ",
+    "runTime": "Durata:"
 }

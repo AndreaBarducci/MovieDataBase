@@ -77,7 +77,7 @@ export default {
       metatagServices,
       contents: [],
       full: false,
-      message: ""
+      message: "",
     };
   },
 

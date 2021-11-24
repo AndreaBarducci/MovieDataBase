@@ -17,5 +17,6 @@
     "deathday": "Date de la mort: ",
     "placeOfBirth": "Lieu de naissance: ",
     "biography": "Biographie: ",
-    "knownFor": "Elle joue en: "
+    "knownFor": "Elle joue en: ",
+    "runTime":"Durée:"
 }
