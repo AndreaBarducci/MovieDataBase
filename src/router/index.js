@@ -4,7 +4,7 @@ const routes = [
   {
     path: "/",
     name: "Index",
-    redirect: "/en/list/movie",
+  
   },
   {
     path: "/:lang/list/:type",
