@@ -5,7 +5,7 @@
         <img
           v-if="object.posterPath"
           :src="object.universalPosterPath()"
-          class="max-w-sm rounded-xl"
+          class="max-w-sm rounded-xl m-2"
         />
         <Review
           :rate="object.vote_average"
