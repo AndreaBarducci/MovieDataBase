@@ -103,7 +103,7 @@
           :placeholder="$t('search')"
           v-model="search"
         />
-        <div class="relative">
+        <div class="relative" data-dropdown-toggle="dropdown">
           <div
             class="
               absolute
@@ -141,7 +141,6 @@
                       'bg-blue-500
                       hover:bg-blue-600
                     "
-                    @click="emptyResults()"
                   >
                     <span>{{ object.title || object.name }}</span>
                   </a>
@@ -162,7 +161,6 @@
 import { listServices } from "../services/listServices";
 import LanguageSwitcher from "./LanguageSwitcher.vue";
 import Content from "../Classes/Content";
-
 
 export default {
   components: { LanguageSwitcher },
@@ -190,19 +188,30 @@ export default {
         event.preventDefault();
         this.$refs.searchBar.focus();
       }
+      if (event.key === "Escape") {
+        this.search=""
+        this.$refs.searchBar.blur();
+        this.emptyResults();
+      }
+    },
+
+    toggle() {
+      if (this.$refs.searchBar.blur) {
+        this.search = "";
+        this.emptyResults();
+      }
     },
   },
 
   created() {
     window.addEventListener("keydown", this.focusSearchBar);
+    window.addEventListener("click", this.toggle);
   },
 
   watch: {
-    
     search: {
       handler() {
         if (this.search) this.startSearch();
-        
       },
     },
   },

@@ -3,6 +3,7 @@
     <select
       v-model="$i18n.locale"
       @change="changeLang($event)"
+      
       class="
         align-middle
         bg-blue-700

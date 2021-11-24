@@ -131,12 +131,16 @@ export default {
     films: {
       handler() {
         this.films = this.films.sort((a, b) => b.popularity - a.popularity);
+
+        for (let i = 0; i < this.films.length - 1; i++) {
+          if (this.films[i].id === this.films[i + 1].id)
+            this.films.splice(i + 1, 1);
+        }
       },
     },
 
     $route: {
       handler(newRoute) {
-       
         if (newRoute.name) return;
         this.actor = {};
         this.films = [];
