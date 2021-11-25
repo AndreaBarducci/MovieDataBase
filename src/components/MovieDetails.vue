@@ -11,6 +11,35 @@
           :rate="object.vote_average"
           class="text-3xl text-center text-red-700"
         />
+        <iframe
+          v-if="this?.trailers.length != 0"
+          width="560"
+          height="315"
+          :src="ytTrailer"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+
+        <button
+          v-if="this?.trailers.length > 1"
+          @click="getTrailer()"
+          class="
+            align-middle
+            bg-blue-700
+            hover:bg-white hover:text-blue-700
+            text-white
+            font-semibold
+            py-2
+            px-4
+            m-2
+            border-2 border-black
+            rounded-xl
+          "
+        >
+          Next Trailer
+        </button>
       </div>
       <div>
         <div class="text-center w-full">
@@ -73,6 +102,18 @@
                 {{ object.universalNumber(object.budget) }}
               </p>
             </div>
+          </div>
+          <div v-if="object?.imdb_id  && imdbUrl!==''" class="bg-black">
+            <a :href="imdbUrl" target="_blank"
+              ><i
+                class="
+                  fab
+                  fa-imdb
+                  text-8xl text-transparent
+                  bg-clip-text bg-yellow-400
+                "
+              ></i
+            ></a>
           </div>
         </div>
         <p class="text-xl mx-4" v-if="object.overview !== ''">
@@ -162,6 +203,7 @@
   </div>
 </template>
 <script>
+import Trailer from "../Classes/Trailer";
 import Review from "./Review.vue";
 import Content from "../Classes/Content";
 import Cast from "../Classes/Cast";
@@ -173,16 +215,30 @@ export default {
 
   data() {
     return {
+      Trailer,
+      imdbUrl: "",
       Cast,
       Content,
       metatagServices,
       listServices,
       object: {},
       cast: [],
+      trailers: [],
+      copy: [],
+      ytUrl: "https://www.youtube.com/embed/",
+      ytTrailer: "",
+      index: 0,
     };
   },
 
   methods: {
+    getTrailer() {
+      if (this.index === this.trailers.length) this.index = 0;
+      let id = this?.trailers[this.index]?.key;
+      this.ytTrailer = `${this.ytUrl}${id}`;
+      this.index++;
+    },
+
     convert(t) {
       return `${(t / 60) ^ 0}` + "h" + (t % 60) + "m";
     },
@@ -199,15 +255,32 @@ export default {
       listServices
         .getCastById(this.$route.params.type, this.$route.params.id)
         .then((data) => (this.cast = data));
+
+      listServices
+        .getTrailersById(this.$route.params.type, this.$route.params.id)
+        .then((data) => (this.copy = data));
     },
   },
 
   watch: {
+    copy: {
+      handler() {
+        this.trailers = [];
+        this.index = 0;
+        for (let obj of this.copy) {
+          if (obj.type === "Trailer") this.trailers.push(obj);
+        }
+        this.getTrailer();
+         if (this.object?.imdb_id) this.imdbUrl = this.object.universalUrl();
+      },
+    },
+
     $route: {
       handler() {
         if (!this.$route.params.id || this.$route.params.type === "person")
           return;
         this.object = {};
+        this.trailers = [];
         this.details();
       },
     },

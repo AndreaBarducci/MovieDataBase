@@ -17,6 +17,9 @@ export default class Content {
     "release_date",
     "media_type",
     "runtime",
+    "homepage",
+    "imdb_id",
+
 
     {
       from: "poster_path",
@@ -39,6 +42,9 @@ export default class Content {
     }
 
     if (s === "details") {
+
+     
+      
       for (const company of obj.production_companies) {
         this.productionCompanies.push(new Logo(company));
       }
@@ -64,7 +70,6 @@ export default class Content {
   genres = [];
   type = "";
   episode_run_time = [];
-
   universalTitle() {
     return this.title || this.name;
   }
@@ -78,10 +83,16 @@ export default class Content {
     return listServices.bindImage(this.posterPath);
   }
 
+  universalUrl(){
+    
+    return listServices.bindUrl(this.imdb_id)
+  }
+
   universalNumber(number) {
     return new Intl.NumberFormat(getCurrentLocale, {
       style: "currency",
       currency: "USD",
     }).format(number);
   }
+
 }

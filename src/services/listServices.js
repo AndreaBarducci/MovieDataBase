@@ -1,4 +1,5 @@
 import Cast from "../Classes/Cast";
+import Trailer from "../Classes/Trailer";
 import Content from "../Classes/Content";
 import Actor from "../Classes/Actor";
 import Film from "../Classes/Film";
@@ -8,6 +9,7 @@ export const listServices = {
   apiKey: "6f9286d54de4891ea7a5c91779e09786",
   posterpath: "https://image.tmdb.org/t/p/original",
   baseUrl: "https://api.themoviedb.org/3/",
+  imdbUrl: "https://www.imdb.com/title/",
 
   /**
    *
@@ -38,6 +40,13 @@ export const listServices = {
   getCastById(type, id) {
     return this.baseFetch(`${type}/${id}/credits`).then((x) =>
       x.cast.map((c) => new Cast(c))
+    );
+  },
+
+  getTrailersById(type, id) {
+    
+    return this.baseFetch(`${type}/${id}/videos`).then((x) =>
+      x.results.map((c) => new Trailer(c))
     );
   },
 
@@ -85,4 +94,8 @@ export const listServices = {
   search(query) {
     return this.baseFetch("search/multi", { query });
   },
+
+  bindUrl(id){
+    return `${this.imdbUrl}${id}`
+  }
 };

@@ -14,6 +14,7 @@ export default class Actor {
     "place_of_birth",
     "biography",
   ];
+  type="";
 
   constructor(obj, type) {
     this.type = type;
