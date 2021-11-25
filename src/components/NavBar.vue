@@ -214,8 +214,6 @@ export default {
   },
 
   watch: {
-    
-
     search: {
       handler() {
         if (this.search) {

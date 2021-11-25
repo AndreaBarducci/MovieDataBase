@@ -93,11 +93,16 @@
                 text-center
               "
             >
-              <img v-if="logo.logoPath"
+              <img
+                v-if="logo.logoPath"
                 class="mx-auto object-contain w-48 h-48 rounded-lg"
                 :src="logo.bindedImage"
               />
-              <img v-else src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found.png" alt="poster" >
+              <img
+                v-else
+                src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found.png"
+                alt="poster"
+              />
               <span class="font-semibold m-1">
                 {{ logo.name }}
               </span>
@@ -200,8 +205,8 @@ export default {
   watch: {
     $route: {
       handler() {
-        
-        if (!this.$route.params.id || this.$route.params.type === 'person') return;
+        if (!this.$route.params.id || this.$route.params.type === "person")
+          return;
         this.object = {};
         this.details();
       },

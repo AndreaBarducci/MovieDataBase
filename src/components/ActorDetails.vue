@@ -1,5 +1,5 @@
 <template>
- <div class="bg-gray-400">
+  <div class="bg-gray-400">
     <div class="text-center">
       <h1 class="font-extrabold text-4xl">
         {{ actor.name }}
@@ -23,10 +23,12 @@
         <div class="ml-4">
           <div>
             <p v-if="actor.birthday">
-              {{ $t("birthday") }} {{ actor.universalBirthDate(actor.birthday) }}
+              {{ $t("birthday") }}
+              {{ actor.universalBirthDate(actor.birthday) }}
             </p>
             <p v-if="actor.deathday">
-              {{ $t("deathday") }} {{ actor.universalDeathDate(actor.deathday) }}
+              {{ $t("deathday") }}
+              {{ actor.universalDeathDate(actor.deathday) }}
             </p>
             <p v-if="actor.place_of_birth">
               {{ $t("placeOfBirth") }} {{ actor.place_of_birth }}
@@ -128,7 +130,7 @@ export default {
 
   watch: {
     films: {
-       handler() {
+      handler() {
         this.films = this.films.sort((a, b) => b.popularity - a.popularity);
 
         for (let i = 0; i < this.films.length - 1; i++) {
@@ -140,10 +142,9 @@ export default {
 
     $route: {
       handler(newRoute) {
-        
         if (!newRoute.params.id) return;
-        if(this.$route.params.type !== 'person') return;
-        
+        if (this.$route.params.type !== "person") return;
+
         this.actor = {};
         this.films = [];
         this.details();
