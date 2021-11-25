@@ -6,7 +6,7 @@ import Film from "../Classes/Film";
 import { getCurrentLocale } from "../i18n";
 
 export const listServices = {
-  apiKey: "6f9286d54de4891ea7a5c91779e09786",
+  apiKey: process.env.VUE_APP_APIKEY,
   posterpath: "https://image.tmdb.org/t/p/original",
   baseUrl: "https://api.themoviedb.org/3/",
   imdbUrl: "https://www.imdb.com/title/",
