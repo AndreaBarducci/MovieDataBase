@@ -83,6 +83,6 @@ export const listServices = {
   },
 
   search(query) {
-    return this.baseFetch("search/multi/", { query });
+    return this.baseFetch("search/multi", { query });
   },
 };
