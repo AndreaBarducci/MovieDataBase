@@ -142,6 +142,7 @@ export default {
       handler(newRoute) {
         
         if (!newRoute.params.id) return;
+        if(this.$route.params.type !== 'person') return;
         
         this.actor = {};
         this.films = [];
