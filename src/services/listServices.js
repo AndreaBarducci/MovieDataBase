@@ -43,6 +43,12 @@ export const listServices = {
     );
   },
 
+  getProviderById(type, id) {
+    return this.baseFetch(`${type}/${id}/watch/providers`)
+
+  },
+
+
   getTrailersById(type, id) {
     
     return this.baseFetch(`${type}/${id}/videos`).then((x) =>

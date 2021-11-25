@@ -103,7 +103,7 @@
               </p>
             </div>
           </div>
-          <div v-if="object?.imdb_id  && imdbUrl!==''" class="bg-black">
+          <div v-if="object?.imdb_id && imdbUrl !== ''" class="bg-black">
             <a :href="imdbUrl" target="_blank"
               ><i
                 class="
@@ -119,6 +119,30 @@
         <p class="text-xl mx-4" v-if="object.overview !== ''">
           {{ $t("overview") }}{{ object.overview }}
         </p>
+        <div>
+          <select
+            @change="changeType($event)"
+            class="
+              align-middle
+              bg-blue-700
+              hover:bg-white hover:text-blue-700
+              text-white
+              font-semibold
+              border-2 border-black
+              rounded-xl
+              h-12
+              uppercase
+              mr-4
+            "
+          >
+            <option v-for="(type, i) in types" :key="i" :value="type">
+              {{ type }}
+            </option>
+          </select>
+          <div v-if="type === 'rent'"></div>
+          <div v-if="type === 'buy'"></div>
+          <div v-if="type === 'flatrate'"></div>
+        </div>
         <div class="md:flex flex-wrap align-middle">
           <div
             v-for="logo in object.productionCompanies"
@@ -215,6 +239,9 @@ export default {
 
   data() {
     return {
+      type: "rent",
+      providers: {},
+      types: ["rent", "buy", "flatrate"],
       Trailer,
       imdbUrl: "",
       Cast,
@@ -232,6 +259,10 @@ export default {
   },
 
   methods: {
+    changeType(event) {
+      this.type = event.target.value;
+    },
+
     getTrailer() {
       if (this.index === this.trailers.length) this.index = 0;
       let id = this?.trailers[this.index]?.key;
@@ -259,6 +290,10 @@ export default {
       listServices
         .getTrailersById(this.$route.params.type, this.$route.params.id)
         .then((data) => (this.copy = data));
+
+      listServices
+        .getProviderById(this.$route.params.type, this.$route.params.id)
+        .then((x) => (this.providers = x.results.BR));
     },
   },
 
@@ -271,7 +306,13 @@ export default {
           if (obj.type === "Trailer") this.trailers.push(obj);
         }
         this.getTrailer();
-         if (this.object?.imdb_id) this.imdbUrl = this.object.universalUrl();
+        if (this.object?.imdb_id) this.imdbUrl = this.object.universalUrl();
+      },
+    },
+
+    providers: {
+      handler() {
+        console.log(this.providers)
       },
     },
 

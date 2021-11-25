@@ -17,9 +17,9 @@
         mr-4
       "
     >
-      <option v-for="(lang, i) in langs" :key="`lang-${i}`" :value="lang">
-        {{ lang }}
-      </option>
+        <option v-for="(lang, i) in langs" :key="`lang-${i}`" :value="lang">
+          {{ lang }}
+        </option>
     </select>
   </div>
 </template>
