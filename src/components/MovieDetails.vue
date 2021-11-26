@@ -68,17 +68,23 @@
                 <p class="mx-2">{{ genre.name }}</p>
               </div>
             </div>
-            <div class="border-2 border-black rounded-lg mx-1 bg-white">
-              <p v-if="object.type === 'tv'">
+            <div
+              v-if="object?.episode_run_time?.length"
+              class="border-2 border-black rounded-lg mx-1 bg-white"
+            >
+              <p>
                 {{ $t("episodeRunTime") }}
                 {{ object.episode_run_time[0] }}m
               </p>
-              <div v-else>
-                <p v-if="object.runtime > 0">
-                  {{ $t("runTime") }}
-                  {{ convert(object.runtime) }}
-                </p>
-              </div>
+            </div>
+            <div
+              class="border-2 border-black rounded-lg mx-1 bg-white"
+              v-if="object.runtime > 0"
+            >
+              <p>
+                {{ $t("runTime") }}
+                {{ convert(object.runtime) }}
+              </p>
             </div>
           </div>
         </div>
@@ -121,6 +127,7 @@
         </p>
         <div v-if="$route.params.type === 'movie'">
           <select
+            v-if="availableProviderOptions?.length"
             v-model="selectedProviderOption"
             class="
               align-middle
