@@ -250,7 +250,7 @@ export default {
   components: { Review },
 
   data() {
-    return {
+    return {  
       providers: {},
       selectedProviderOption: "buy",
       Trailer,
@@ -305,6 +305,9 @@ export default {
       listServices
         .getProviderById(this.$route.params.type, this.$route.params.id)
         .then((x) => (this.providers = x.results));
+
+        
+  
     },
 
     getImage(x) {
