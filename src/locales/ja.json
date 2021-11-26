@@ -19,5 +19,10 @@
     "biography": "バイオグラフィー: ",
     "knownFor": "彼は主演しました: ",
     "runTime": "間隔:",
-    "nextTrailer":"次の予告編"
+    "nextTrailer":"次の予告編",
+    "providerOptions": {
+        "rent": "家賃",
+        "buy": "買う",
+        "flatrate": "定額制料金"
+    }
 }

@@ -19,5 +19,10 @@
     "biography": "Biografia: ",
     "knownFor": "Ha recitato in: ",
     "runTime": "Durata:",
-    "nextTrailer": "Prossimo trailer"
+    "nextTrailer": "Prossimo trailer",
+    "providerOptions": {
+        "rent": "noleggia",
+        "buy" : "compra",
+        "flatrate": "flatrate"
+      }
 }

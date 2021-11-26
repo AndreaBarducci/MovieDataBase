@@ -19,5 +19,10 @@
     "biography": "Biografía: ",
     "knownFor": "Protagonizó: ",
     "runTime": "Duración:",
-    "nextTrailer": "siguiente tráiler"
+    "nextTrailer": "siguiente tráiler",
+    "providerOptions": {
+        "rent": "alquilar",
+        "buy": "comprar",
+        "flatrate": "flatrate"
+    }
 }

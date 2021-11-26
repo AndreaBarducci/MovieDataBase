@@ -19,5 +19,10 @@
     "biography": "传: ",
     "knownFor": "他出演: ",
     "runTime": "期间:",
-    "nextTrailer":"下一个预告片"
+    "nextTrailer":"下一个预告片",
+    "providerOptions": {
+        "rent": "임차료",
+        "buy": "구입",
+        "flatrate": "정액"
+    }
 }

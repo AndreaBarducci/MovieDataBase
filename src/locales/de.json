@@ -3,7 +3,7 @@
     "budget": "Budget: ",
     "releaseDate": "Veröffentlichungsdatum: ",
     "genres": "Genres:",
-    "overview":"Parzelle: ",
+    "overview": "Parzelle: ",
     "backToList": "Zurück",
     "movieButton": "Film",
     "tvButton": "Fernsehserie",
@@ -19,5 +19,10 @@
     "biography": "Biografie: ",
     "knownFor": "Er spielte in: ",
     "runTime": "Dauer:",
-    "nextTrailer":"nächster Trailer"
+    "nextTrailer": "nächster Trailer",
+    "providerOptions": {
+        "rent": "mieten",
+        "buy": "kaufen",
+        "flatrate": "flatrate"
+    }
 }

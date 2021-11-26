@@ -19,5 +19,10 @@
     "biography": "Biographie: ",
     "knownFor": "Elle joue en: ",
     "runTime":"Durée:",
-    "nextTrailer": "prochaine bande-annonce"
+    "nextTrailer": "prochaine bande-annonce",
+    "providerOptions": {
+        "rent": "louer",
+        "buy": "acheter",
+        "flatrate": "flatrate"
+    }
 }

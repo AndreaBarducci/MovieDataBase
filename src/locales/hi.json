@@ -19,6 +19,10 @@
   "biography": "जीवनी: ",
   "knownFor": "उन्होंने इसमें अभिनय किया: ",
   "runTime": "अवधि:",
-  "nextTrailer": "अगला ट्रेलर"
-  
+  "nextTrailer": "अगला ट्रेलर",
+  "providerOptions": {
+    "rent": "किराया",
+    "buy": "खरीदना",
+    "flatrate": "फ्लैट रेट"
+}
 }

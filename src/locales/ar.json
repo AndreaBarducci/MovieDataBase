@@ -19,5 +19,10 @@
     "biography": "سيرة شخصية: ",
     "knownFor": "قام ببطولة: ",
     "runTime": "مدة:",
-    "nextTrailer": "المقطورة التالية"
+    "nextTrailer": "المقطورة التالية",
+    "providerOptions": {
+        "rent": "تأجير",
+        "buy" : "يشترى",
+        "flatrate": "معدل"
+      } 
 }

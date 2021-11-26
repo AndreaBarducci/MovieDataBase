@@ -19,5 +19,10 @@
     "biography": "биография: ",
     "knownFor": "Он снялся в: ",
     "runTime": "Продолжительность:",
-    "nextTrailer": "следующий трейлер"
+    "nextTrailer": "следующий трейлер",
+    "providerOptions": {
+        "rent": "арендовать",
+        "buy": "купить",
+        "flatrate": "Единая ставка"
+    }
 }
