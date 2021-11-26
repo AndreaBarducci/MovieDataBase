@@ -270,6 +270,7 @@ export default {
   },
 
   methods: {
+
     changeType(event) {
       this.type = event.target.value;
     },
@@ -310,9 +311,7 @@ export default {
   
     },
 
-    getImage(x) {
-      console.log(x);
-    },
+  
   },
 
   watch: {
