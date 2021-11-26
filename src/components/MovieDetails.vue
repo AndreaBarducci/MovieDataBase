@@ -150,7 +150,7 @@
               {{ $t("providerOptions." + type) }}
             </option>
           </select>
-          <div v-for="(x, i) in pippo" :key="i">
+          <div v-for="(x, i) in typeList" :key="i">
             <img :src="listServices.bindImage(x.logo_path)" alt="poster" />
             <p>{{ x.provider_name }}</p>
           </div>
@@ -369,7 +369,7 @@ export default {
       );
     },
 
-    pippo() {
+    typeList() {
       return this.currentProvider?.[this.selectedProviderOption ?? ""] ?? [];
     },
   },
