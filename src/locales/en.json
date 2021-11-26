@@ -18,6 +18,11 @@
   "placeOfBirth": "Place of birth: ",
   "biography": "Biography: ",
   "knownFor": "Known for: ",
-  "runTime": "Run time:"
-
+  "runTime": "Run time:",
+  "nextTrailer": "Next trailer",
+  "providerOptions": {
+    "rent": "rent-en",
+    "buy" : "buy-en",
+    "flatrate": "flat-en"
+  }
 }

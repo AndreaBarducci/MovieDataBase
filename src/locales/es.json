@@ -3,7 +3,7 @@
     "budget": "Presupuesto: ",
     "releaseDate": "Fecha de lanzamiento: ",
     "genres": "Géneros:",
-    "overview":"Trama: ",
+    "overview": "Trama: ",
     "backToList": "Atrás",
     "movieButton": "Película",
     "tvButton": "Series de TV",
@@ -18,5 +18,6 @@
     "placeOfBirth": "Lugar de nacimiento: ",
     "biography": "Biografía: ",
     "knownFor": "Protagonizó: ",
-    "runTime": "Duración:"
+    "runTime": "Duración:",
+    "nextTrailer": "siguiente tráiler"
 }

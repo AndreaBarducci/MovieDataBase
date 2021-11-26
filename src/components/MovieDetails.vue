@@ -38,7 +38,7 @@
             rounded-xl
           "
         >
-          Next Trailer
+          {{ $t("nextTrailer") }}
         </button>
       </div>
       <div>
@@ -119,9 +119,9 @@
         <p class="text-xl mx-4" v-if="object.overview !== ''">
           {{ $t("overview") }}{{ object.overview }}
         </p>
-        <div>
+        <div v-if="$route.params.type === 'movie'">
           <select
-            @change="changeType($event)"
+            v-model="selectedProviderOption"
             class="
               align-middle
               bg-blue-700
@@ -135,13 +135,14 @@
               mr-4
             "
           >
-            <option v-for="(type, i) in types" :key="i" :value="type">
-              {{ type }}
+            <option
+              v-for="(type, i) in availableProviderOptions"
+              :key="i"
+              :value="type"
+            >
+              {{ $t("providerOptions." + type) }}
             </option>
           </select>
-          <div v-if="type === 'rent'"></div>
-          <div v-if="type === 'buy'"></div>
-          <div v-if="type === 'flatrate'"></div>
         </div>
         <div class="md:flex flex-wrap align-middle">
           <div
@@ -222,6 +223,8 @@
         "
       >
         {{ $t("backToList") }}
+
+        {{ pippo }}
       </button>
     </router-link>
   </div>
@@ -239,9 +242,8 @@ export default {
 
   data() {
     return {
-      type: "rent",
       providers: {},
-      types: ["rent", "buy", "flatrate"],
+      selectedProviderOption: "buy",
       Trailer,
       imdbUrl: "",
       Cast,
@@ -293,7 +295,7 @@ export default {
 
       listServices
         .getProviderById(this.$route.params.type, this.$route.params.id)
-        .then((x) => (this.providers = x.results.BR));
+        .then((x) => (this.providers = x.results));
     },
   },
 
@@ -307,12 +309,6 @@ export default {
         }
         this.getTrailer();
         if (this.object?.imdb_id) this.imdbUrl = this.object.universalUrl();
-      },
-    },
-
-    providers: {
-      handler() {
-        console.log(this.providers)
       },
     },
 
@@ -335,6 +331,31 @@ export default {
     if (this.object.id !== undefined) {
       metatagServices.changeTitle(this.object.universalTitle());
     }
+  },
+
+  computed: {
+    currentProvider() {
+      const provider = this.providers[this.$route.params.lang.toUpperCase()];
+
+      if (!provider) {
+        const fallback = Object.keys(this.providers)[0];
+
+        if (!fallback) return {};
+
+        return this.providers[fallback];
+      }
+
+      return provider;
+    },
+    availableProviderOptions() {
+      return Object.keys(this.currentProvider).filter((key) =>
+        Array.isArray(this.currentProvider[key])
+      );
+    },
+
+    pippo() {
+      return this.currentProvider?.[this.selectedProviderOption ?? ""] ?? [];
+    },
   },
 };
 </script>
