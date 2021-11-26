@@ -143,6 +143,10 @@
               {{ $t("providerOptions." + type) }}
             </option>
           </select>
+          <div v-for="(x, i) in pippo" :key="i">
+            <img :src="listServices.bindImage(x.logo_path)" alt="poster" />
+            <p>{{ x.provider_name }}</p>
+          </div>
         </div>
         <div class="md:flex flex-wrap align-middle">
           <div
@@ -223,8 +227,6 @@
         "
       >
         {{ $t("backToList") }}
-
-        {{ pippo }}
       </button>
     </router-link>
   </div>
@@ -296,6 +298,10 @@ export default {
       listServices
         .getProviderById(this.$route.params.type, this.$route.params.id)
         .then((x) => (this.providers = x.results));
+    },
+
+    getImage(x) {
+      console.log(x);
     },
   },
 

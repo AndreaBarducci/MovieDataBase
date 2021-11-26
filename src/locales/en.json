@@ -21,8 +21,8 @@
   "runTime": "Run time:",
   "nextTrailer": "Next trailer",
   "providerOptions": {
-    "rent": "rent-en",
-    "buy" : "buy-en",
-    "flatrate": "flat-en"
+    "rent": "rent",
+    "buy" : "buy",
+    "flatrate": "flatrate"
   }
 }
