@@ -23,6 +23,7 @@
     "vue-i18n": "^9.1.0",
     "vue-meta": "^3.0.0-alpha.7",
     "vue-router": "^4.0.0-0",
+    "vue-star-rating": "^2.1.0",
     "vue3-infinite-scroll": "^0.0.1-security",
     "vuex": "^4.0.0-0"
   },

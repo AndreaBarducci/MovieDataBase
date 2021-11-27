@@ -1,54 +1,57 @@
 <template>
-  <div class="bg-gray-400">
-    <div class="flex flex-row border-b-4 border-black mb-2">
-      <div>
-        <img
-          v-if="object.posterPath"
-          :src="object.universalPosterPath()"
-          class="max-w-sm rounded-xl m-2"
-        />
-        <Review
-          :rate="object.vote_average"
-          class="text-3xl text-center text-red-700"
-        />
-        <iframe
-          v-if="this?.trailers.length != 0"
-          width="560"
-          height="315"
-          :src="ytTrailer"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+  <div class="bg-gray-400 container">
+    <div class="flex flex-row">
+      <div class="max-w-md m-2">
+        <div>
+          <img
+            v-if="object.posterPath"
+            :src="object.universalPosterPath()"
+            class="max-w-md rounded-2xl"
+          />
+          <Review
+            :rate="object.vote_average"
+            class="text-3xl text-center text-red-700"
+          />
+        </div>
+        <div>
+          <iframe
+            v-if="this?.trailers.length != 0"
+            :src="ytTrailer"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
 
-        <button
-          v-if="this?.trailers.length > 1"
-          @click="getTrailer()"
-          class="
-            align-middle
-            bg-blue-700
-            hover:bg-white hover:text-blue-700
-            text-white
-            font-semibold
-            py-2
-            px-4
-            m-2
-            border-2 border-black
-            rounded-xl
-          "
-        >
-          {{ $t("nextTrailer") }}
-        </button>
+          <button
+            v-if="this?.trailers.length > 1"
+            @click="getTrailer()"
+            class="
+              align-middle
+              bg-blue-700
+              hover:bg-white hover:text-blue-700
+              text-white
+              font-semibold
+              py-2
+              px-4
+              m-2
+              border-2 border-black
+              rounded-xl
+            "
+          >
+            {{ $t("nextTrailer") }}
+          </button>
+        </div>
       </div>
-      <div>
-        <div class="text-center w-full">
-          <h1 v-if="object.universalTitle" class="font-extrabold text-4xl">
+      <div class="flex flex-wrap mx-4">
+        <div class="place-self-center text-center w-full">
+          <h1 v-if="object.universalTitle" class="font-extrabold text-5xl">
             {{ object.universalTitle() }}
           </h1>
-          <div class="flex flex-row place-content-center mt-2">
+        </div>
+        <div class="flex flex-wrap max-w-lg items-center">
+          <div class="mx-2">
             <p
-              class="border-2 border-black rounded-lg mx-1 bg-white"
               v-if="
                 object.universalDate &&
                 (object?.release_date || object?.first_air_date)
@@ -56,139 +59,122 @@
             >
               {{ $t("releaseDate") }} {{ object.universalDate() }}
             </p>
+          </div>
+          <div v-if="object.genres?.length" class="mx-2">
+            <p class="font-semibold text-lg">{{ $t("genres") }}</p>
             <div
-              v-if="object.genres?.length"
-              class="border-2 border-black rounded-lg mx-1 bg-white"
+              v-for="genre in object.genres"
+              :key="genre.id"
+              class="list-item ml-4"
             >
-              <div
-                v-for="genre in object.genres"
-                :key="genre.id"
-                class="inline-block"
-              >
-                <p class="mx-2">{{ genre.name }}</p>
-              </div>
+              <p class="mx-1">{{ genre.name }}</p>
             </div>
-            <div
-              v-if="object?.episode_run_time?.length"
-              class="border-2 border-black rounded-lg mx-1 bg-white"
-            >
-              <p>
-                {{ $t("episodeRunTime") }}
-                {{ object.episode_run_time[0] }}m
-              </p>
+          </div>
+
+          <div v-if="object?.episode_run_time?.length" class="mx-2">
+            <p>
+              {{ $t("episodeRunTime") }}
+              {{ object.episode_run_time[0] }}m
+            </p>
+          </div>
+          <div v-if="object.runtime > 0" class="mx-2">
+            <p>
+              {{ $t("runTime") }}
+              {{ convert(object.runtime) }}
+            </p>
+          </div>
+
+          <div v-if="object.type === 'tv'" class="mx-2">
+            <div v-if="object.number_of_seasons > 0">
+              {{ $t("numberOfSeasons") }} {{ object.number_of_seasons }}
             </div>
-            <div
-              class="border-2 border-black rounded-lg mx-1 bg-white"
-              v-if="object.runtime > 0"
-            >
-              <p>
-                {{ $t("runTime") }}
-                {{ convert(object.runtime) }}
-              </p>
+          </div>
+          <div v-if="object.type === 'tv'" class="mx-2">
+            <div v-if="object.number_of_episodes > 0">
+              {{ $t("numberOfEpisodes") }} {{ object.number_of_episodes }}
+            </div>
+          </div>
+
+          <div v-if="object.type === 'movie'" class="mx-2">
+            <div v-if="object.revenue > 0" class="mx-2">
+              {{ $t("revenue") }}
+              {{ object.universalNumber(object.revenue) }}
+            </div>
+          </div>
+          <div v-if="object.type === 'movie'" class="mx-2">
+            <div v-if="object.budget > 0" class="mx-2">
+              {{ $t("budget") }}
+              {{ object.universalNumber(object.budget) }}
             </div>
           </div>
         </div>
-        <div class="flex flex-row m-auto">
-          <div class="m-4">
-            <div v-if="object.type === 'tv'">
-              <p v-if="object.number_of_seasons > 0">
-                {{ $t("numberOfSeasons") }} {{ object.number_of_seasons }}
-              </p>
-              <p v-if="object.number_of_episodes > 0">
-                {{ $t("numberOfEpisodes") }} {{ object.number_of_episodes }}
-              </p>
-            </div>
-            <div v-else>
-              <p v-if="object.revenue > 0">
-                {{ $t("revenue") }}
-                {{ object.universalNumber(object.revenue) }}
-              </p>
-              <p v-if="object.budget > 0">
-                {{ $t("budget") }}
-                {{ object.universalNumber(object.budget) }}
-              </p>
-            </div>
-          </div>
-          <div v-if="object?.imdb_id && imdbUrl !== ''" class="bg-black">
-            <a :href="imdbUrl" target="_blank"
-              ><i
-                class="
-                  fab
-                  fa-imdb
-                  text-8xl text-transparent
-                  bg-clip-text bg-yellow-400
-                "
-              ></i
-            ></a>
-          </div>
-        </div>
-        <p class="text-xl mx-4" v-if="object.overview !== ''">
-          {{ $t("overview") }}{{ object.overview }}
-        </p>
-        <div>
-          <select
-            v-if="availableProviderOptions()?.length"
-            v-model="selectedProviderOption"
-            class="
-              align-middle
-              bg-blue-700
-              hover:bg-white hover:text-blue-700
-              text-white
-              font-semibold
-              border-2 border-black
-              rounded-xl
-              h-12
-              uppercase
-              mr-4
-            "
-          >
-            <option
-              v-for="(type, i) in availableProviderOptions()"
-              :key="i"
-              :value="type"
-            >
-              {{ $t("providerOptions." + type) }}
-            </option>
-          </select>
-          <div v-for="(x, i) in typeList" :key="i">
-            <img :src="listServices.bindImage(x.logo_path)" alt="poster" />
-            <p>{{ x.provider_name }}</p>
-          </div>
-        </div>
-        <div class="md:flex flex-wrap align-middle">
-          <div
-            v-for="logo in object.productionCompanies"
-            class="max-w-xs mx-auto"
-            :key="logo.id"
-          >
-            <div
+
+        <div v-if="object?.imdb_id && imdbUrl !== ''" class="mx-2">
+          <a :href="imdbUrl" target="_blank"
+            ><i
               class="
-                inline-block
+                fab
+                fa-imdb
+                text-8xl text-transparent
+                bg-clip-text bg-yellow-400
+              "
+            ></i
+          ></a>
+        </div>
+        <button @click="post()" class="mx-2">
+          <div class="inline-block">
+            <star-rating
+              :show-rating="false"
+              @hover:rating="mouseOverRating = $event"
+              :increment="0.5"
+            ></star-rating>
+          </div>
+        </button>
+        <div class="">
+          <p class="text-xl" v-if="object.overview !== ''">
+            {{ $t("overview") }}{{ object.overview }}
+          </p>
+        </div>
+        <div class="flex flex-wrap">
+          <div
+           
+            class="flex flex-row place-items-center text-center"
+          >
+            <select
+              v-if="availableProviderOptions()?.length"
+              v-model="selectedProviderOption"
+              class="
+                bg-blue-700
+                hover:bg-white hover:text-blue-700
+                text-white
+                font-semibold
                 border-2 border-black
-                rounded-lg
-                bg-white
-                text-center
+                rounded-xl
+                h-md
+                uppercase
               "
             >
+              <option
+                v-for="(type, i) in availableProviderOptions()"
+                :key="i"
+                :value="type"
+              >
+                {{ $t("providerOptions." + type) }}
+              </option>
+            </select>
+
+            <div v-for="(x, i) in typeList" :key="i" class="mx-4">
               <img
-                v-if="logo.logoPath"
-                class="mx-auto object-contain w-48 h-48 rounded-lg"
-                :src="logo.bindedImage"
-              />
-              <img
-                v-else
-                src="https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found.png"
+                :src="listServices.bindImage(x.logo_path)"
                 alt="poster"
+                class="rounded-2xl mx-auto self-center"
               />
-              <span class="font-semibold m-1">
-                {{ logo.name }}
-              </span>
+              <p class="truncate">{{ x.provider_name }}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <div class="flex flex-row overflow-x-auto text-center">
       <ul v-for="actor in cast" :key="actor.id">
         <router-link
@@ -201,13 +187,13 @@
             },
           }"
         >
-          <li class="mx-1 max-h-lg w-64" v-if="actor?.profile_path">
+          <li class="mx-2 max-h-lg w-64" v-if="actor?.profile_path">
             <img
               :src="actor.universalPosterPath()"
               alt="poster"
               class="rounded-xl"
             />
-            <p class="troncate">{{ actor.name }} - {{ actor.character }}</p>
+            <p class="truncate">{{ actor.name }} - {{ actor.character }}</p>
           </li>
         </router-link>
       </ul>
@@ -245,12 +231,17 @@ import Content from "../Classes/Content";
 import Cast from "../Classes/Cast";
 import { listServices } from "../services/listServices";
 import { metatagServices } from "../services/metatagServices";
+import StarRating from "vue-star-rating";
 
 export default {
-  components: { Review },
+  components: { Review, StarRating },
 
   data() {
     return {
+      value: {
+        value: 0,
+      },
+      vote: 0,
       providers: {},
       selectedProviderOption: "",
       Trailer,
@@ -266,10 +257,49 @@ export default {
       ytUrl: "https://www.youtube.com/embed/",
       ytTrailer: "",
       index: 0,
+      rating: 0,
+      resetableRating: 2,
+      currentRating: 0,
+      mouseOverRating: 0,
     };
   },
 
   methods: {
+    availableProviderOptions() {
+      const array = Object.keys(this.currentProvider).filter((key) =>
+        Array.isArray(this.currentProvider[key])
+      );
+
+      if (this.selectedProviderOption === "" && array?.length) {
+        this.selectedProviderOption = array[0];
+      }
+
+      return array;
+    },
+
+    post() {
+      this.value.value = this.mouseOverRating * 2;
+      const options = {
+        method: "POST",
+        body: JSON.stringify(this.value),
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+      };
+      fetch(
+        `${listServices.baseUrl}${this.$route.params.type}/${this.$route.params.id}
+        /rating?api_key=${listServices.apiKey}&guest_session_id=${listServices.guestSessionId}`,
+        options
+      );
+    },
+
+    showCurrentRating(rating) {
+      this.currentSelectedRating =
+        rating === 0
+          ? this.currentSelectedRating
+          : "Click to select " + rating + " stars";
+    },
+
     changeType(event) {
       this.type = event.target.value;
     },
@@ -306,14 +336,6 @@ export default {
         .getProviderById(this.$route.params.type, this.$route.params.id)
         .then((x) => (this.providers = x.results));
     },
-
-    availableProviderOptions() {
-      const array = Object.keys(this.currentProvider).filter((key) =>
-        Array.isArray(this.currentProvider[key])
-      );
-      this.selectedProviderOption = array[0]
-      return array
-    },
   },
 
   watch: {
@@ -343,7 +365,9 @@ export default {
   created() {
     this.$i18n.locale = this.$route.params.lang;
     this.details();
+    if (listServices.guestSessionId === "") listServices.getGuestSessionId();
   },
+
   beforeUpdate() {
     if (this.object.id !== undefined) {
       metatagServices.changeTitle(this.object.universalTitle());
@@ -358,11 +382,13 @@ export default {
         const fallback = Object.keys(this.providers)[0];
 
         if (!fallback) return {};
-
         return this.providers[fallback];
       }
-
       return provider;
+    },
+
+    mouseOverRatingText() {
+      return this.mouseOverRating * 2;
     },
 
     typeList() {

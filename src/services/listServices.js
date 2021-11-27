@@ -10,7 +10,7 @@ export const listServices = {
   posterpath: "https://image.tmdb.org/t/p/original",
   baseUrl: "https://api.themoviedb.org/3/",
   imdbUrl: "https://www.imdb.com/title/",
-
+  guestSessionId: "",
   /**
    *
    * @param {*} type
@@ -37,6 +37,12 @@ export const listServices = {
     );
   },
 
+  getGuestSessionId(){
+    this.baseFetch("authentication/guest_session/new").then(
+      (x) => (this.guestSessionId = x.guest_session_id)
+    );
+  },
+
   getCastById(type, id) {
     return this.baseFetch(`${type}/${id}/credits`).then((x) =>
       x.cast.map((c) => new Cast(c))
@@ -45,12 +51,10 @@ export const listServices = {
 
   getProviderById(type, id) {
     return this.baseFetch(`${type}/${id}/watch/providers`)
-
   },
 
-
   getTrailersById(type, id) {
-    
+
     return this.baseFetch(`${type}/${id}/videos`).then((x) =>
       x.results.map((c) => new Trailer(c))
     );
@@ -101,7 +105,7 @@ export const listServices = {
     return this.baseFetch("search/multi", { query });
   },
 
-  bindUrl(id){
+  bindUrl(id) {
     return `${this.imdbUrl}${id}`
   }
 };
