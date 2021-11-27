@@ -125,7 +125,7 @@
         <p class="text-xl mx-4" v-if="object.overview !== ''">
           {{ $t("overview") }}{{ object.overview }}
         </p>
-        <div v-if="$route.params.type === 'movie'">
+        <div>
           <select
             v-if="availableProviderOptions()?.length"
             v-model="selectedProviderOption"

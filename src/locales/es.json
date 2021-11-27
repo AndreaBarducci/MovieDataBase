@@ -23,6 +23,8 @@
     "providerOptions": {
         "rent": "alquilar",
         "buy": "comprar",
-        "flatrate": "streaming"
+        "flatrate": "streaming",
+        "free": "gratis",
+        "ads": "anuncios"
     }
 }

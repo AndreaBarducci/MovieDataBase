@@ -18,11 +18,13 @@
     "placeOfBirth": "Lieu de naissance: ",
     "biography": "Biographie: ",
     "knownFor": "Elle joue en: ",
-    "runTime":"Durée:",
+    "runTime": "Durée:",
     "nextTrailer": "prochaine bande-annonce",
     "providerOptions": {
         "rent": "louer",
         "buy": "acheter",
-        "flatrate": "streaming"
+        "flatrate": "streaming",
+        "free": "libre",
+        "ads": "publicités"
     }
 }

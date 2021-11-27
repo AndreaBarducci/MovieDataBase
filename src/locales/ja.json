@@ -3,7 +3,7 @@
     "budget": "バジェット: ",
     "releaseDate": "発売日: ",
     "genres": "ジャンル:",
-    "overview":"プロット: ",
+    "overview": "プロット: ",
     "backToList": "戻る",
     "movieButton": "映画",
     "tvButton": "連続テレビ番組",
@@ -19,10 +19,12 @@
     "biography": "バイオグラフィー: ",
     "knownFor": "彼は主演しました: ",
     "runTime": "間隔:",
-    "nextTrailer":"次の予告編",
+    "nextTrailer": "次の予告編",
     "providerOptions": {
         "rent": "家賃",
         "buy": "買う",
-        "flatrate": "ストリーミング"
+        "flatrate": "ストリーミング",
+        "free": "विज्ञापन",
+        "ads": "広告"
     }
 }

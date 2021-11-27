@@ -23,6 +23,8 @@
     "providerOptions": {
         "rent": "임차료",
         "buy": "구입",
-        "flatrate": "스트리밍"
+        "flatrate": "스트리밍",
+        "free": "무료",
+        "ads": "광고"
     }
 }

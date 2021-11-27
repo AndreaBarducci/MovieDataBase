@@ -47,7 +47,7 @@
           m-2
           border-2 border-black
           rounded-xl
-          focus:bg-white focus:text-blue-700
+         
         "
       >
         {{ $t("movieButton") }}
@@ -69,7 +69,7 @@
           m-2
           border-2 border-black
           rounded-xl
-          focus:bg-white focus:text-blue-700
+        
         "
       >
         {{ $t("tvButton") }}
@@ -92,7 +92,7 @@
           m-2
           border-2 border-black
           rounded-xl
-          focus:bg-white focus:text-blue-700
+         
         "
       >
         {{ $t("actors") }}

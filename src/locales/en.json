@@ -22,7 +22,9 @@
   "nextTrailer": "Next trailer",
   "providerOptions": {
     "rent": "rent",
-    "buy" : "buy",
-    "flatrate": "streaming"
+    "buy": "buy",
+    "flatrate": "streaming",
+    "free": "free",
+    "ads": "ads"
   }
 }
