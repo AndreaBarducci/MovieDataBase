@@ -23,6 +23,6 @@
     "providerOptions": {
         "rent": "noleggia",
         "buy" : "compra",
-        "flatrate": "flatrate"
+        "flatrate": "streaming"
       }
 }

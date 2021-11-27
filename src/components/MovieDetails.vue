@@ -127,7 +127,7 @@
         </p>
         <div v-if="$route.params.type === 'movie'">
           <select
-            v-if="availableProviderOptions?.length"
+            v-if="availableProviderOptions()?.length"
             v-model="selectedProviderOption"
             class="
               align-middle
@@ -143,7 +143,7 @@
             "
           >
             <option
-              v-for="(type, i) in availableProviderOptions"
+              v-for="(type, i) in availableProviderOptions()"
               :key="i"
               :value="type"
             >
@@ -250,9 +250,9 @@ export default {
   components: { Review },
 
   data() {
-    return {  
+    return {
       providers: {},
-      selectedProviderOption: "buy",
+      selectedProviderOption: "",
       Trailer,
       imdbUrl: "",
       Cast,
@@ -270,7 +270,6 @@ export default {
   },
 
   methods: {
-
     changeType(event) {
       this.type = event.target.value;
     },
@@ -306,12 +305,15 @@ export default {
       listServices
         .getProviderById(this.$route.params.type, this.$route.params.id)
         .then((x) => (this.providers = x.results));
-
-        
-  
     },
 
-  
+    availableProviderOptions() {
+      const array = Object.keys(this.currentProvider).filter((key) =>
+        Array.isArray(this.currentProvider[key])
+      );
+      this.selectedProviderOption = array[0]
+      return array
+    },
   },
 
   watch: {
@@ -361,11 +363,6 @@ export default {
       }
 
       return provider;
-    },
-    availableProviderOptions() {
-      return Object.keys(this.currentProvider).filter((key) =>
-        Array.isArray(this.currentProvider[key])
-      );
     },
 
     typeList() {

@@ -23,6 +23,6 @@
     "providerOptions": {
         "rent": "louer",
         "buy": "acheter",
-        "flatrate": "flatrate"
+        "flatrate": "streaming"
     }
 }
