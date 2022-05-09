@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-400 container">
+  <div class="bg-gray-400 ">
     <div class="flex flex-row">
       <div class="max-w-md m-2">
         <div>
